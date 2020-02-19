@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 import "./random-character.css";
 
-import SwapiService from "../../services/swapi-service";
+import LoadingImage from "../loading-image/loading-image.js";
+
+import ApiService from "../../services/api-service";
 
 class RandomCharacter extends Component {
   constructor() {
@@ -11,34 +13,53 @@ class RandomCharacter extends Component {
   }
 
   state = {
-    name: null,
-    id: null,
-    comics: null,
-    series: null,
-    stories: null,
-    image: null
+    character: {
+      name: null,
+      id: null,
+      comics: null,
+      series: null,
+      stories: null,
+      image: null
+    },
+    loaded: false
   };
 
-  swapiService = new SwapiService();
+  apiService = new ApiService();
 
   updateCharacter() {
-    this.swapiService.getCharacter("1009610").then(character => {
+    const randomNumber = Math.floor(Math.random() * 1492);
+
+    this.apiService.getRandomCharacter(randomNumber).then(character => {
       this.setState({
-        name: character.data.results[0].name,
-        id: character.data.results[0].id,
-        comics: character.data.results[0].comics.available,
-        series: character.data.results[0].series.available,
-        stories: character.data.results[0].stories.available,
-        image:
-          character.data.results[0].thumbnail.path +
-          "." +
-          character.data.results[0].thumbnail.extension
+        character: {
+          name: character.data.results[0].name,
+          id: character.data.results[0].id,
+          comics: character.data.results[0].comics.available,
+          series: character.data.results[0].series.available,
+          stories: character.data.results[0].stories.available,
+          image:
+            character.data.results[0].thumbnail.path +
+            "." +
+            character.data.results[0].thumbnail.extension
+        },
+        loaded: true
       });
     });
   }
 
   render() {
-    const { name, id, comics, series, stories, image } = this.state;
+    const {
+      character: { name, id, comics, series, stories, image },
+      loaded
+    } = this.state;
+
+    if (!loaded) {
+      return (
+        <div className="random-character">
+          <LoadingImage />
+        </div>
+      );
+    }
 
     return (
       <div className="random-character">
