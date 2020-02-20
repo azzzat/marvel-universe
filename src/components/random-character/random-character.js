@@ -3,13 +3,13 @@ import React, { Component } from "react";
 import "./random-character.css";
 
 import LoadingImage from "../loading-image/loading-image.js";
-
 import ApiService from "../../services/api-service";
+import RandomCharacterInfo from "./random-character-info.js";
 
 class RandomCharacter extends Component {
-  constructor() {
-    super();
+  componentDidMount() {
     this.updateCharacter();
+    this.interval = setInterval(this.updateCharacter, 10000);
   }
 
   state = {
@@ -26,7 +26,7 @@ class RandomCharacter extends Component {
 
   apiService = new ApiService();
 
-  updateCharacter() {
+  updateCharacter = () => {
     const randomNumber = Math.floor(Math.random() * 1492);
 
     this.apiService.getRandomCharacter(randomNumber).then(character => {
@@ -45,51 +45,25 @@ class RandomCharacter extends Component {
         loaded: true
       });
     });
-  }
+  };
 
   render() {
-    const {
-      character: { name, id, comics, series, stories, image },
-      loaded
-    } = this.state;
+    const { character, loaded } = this.state;
 
-    if (!loaded) {
-      return (
-        <div className="random-character">
-          <LoadingImage />
-        </div>
-      );
-    }
+    const showLoadingImage = !loaded ? <LoadingImage /> : null;
+    const showRandomCharacter = loaded ? (
+      <RandomCharacterInfo character={character} />
+    ) : null;
 
     return (
       <div className="random-character">
-        <div className="character-image">
-          <img className="character-image" src={image} alt={id + "RandomImg"} />
-        </div>
-        <div>
-          <h2>{name}</h2>
-          <ul>
-            <li>
-              <span>ID: </span>
-              <span>{id}</span>
-            </li>
-            <li>
-              <span>Comics: </span>
-              <span>{comics}</span>
-            </li>
-            <li>
-              <span>Series: </span>
-              <span>{series}</span>
-            </li>
-            <li>
-              <span>Stories: </span>
-              <span>{stories}</span>
-            </li>
-          </ul>
-        </div>
+        {showLoadingImage}
+        {showRandomCharacter}
       </div>
     );
   }
 }
+
+// добавить два компонента: загрузки и информации
 
 export default RandomCharacter;
