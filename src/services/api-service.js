@@ -15,14 +15,21 @@ class ApiService {
     const result = await fetch(
       `https://gateway.marvel.com/v1/public/characters?ts=1&apikey=3bc96d4bd6e4433bbdc3ad4ee302904c&hash=c439a02b89d34016a1cbace6708c4ed9&limit=1&offset=${ramdomNumber}`
     );
-    const character = await result.json();
-    return character;
+    const characters = await result.json();
+    return characters;
   };
 
   getCharacter = async id => {
     const character = await this.getResourse(`characters/${id}`);
-
     return character;
+  };
+
+  getCharactersList = async () => {
+    const characters = await fetch(
+      `https://gateway.marvel.com/v1/public/characters?ts=1&apikey=3bc96d4bd6e4433bbdc3ad4ee302904c&hash=c439a02b89d34016a1cbace6708c4ed9&limit=11&offset=0`
+    );
+    const list = await characters.json();
+    return list.data.results;
   };
 
   // getAllCharacters = async () => {

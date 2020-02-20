@@ -1,0 +1,25 @@
+.character-box {
+  margin: 5px;
+  width: 350px;
+}
+
+.character-name {
+  font-size: large;
+  height: 50px;
+}
+
+.box-character-image {
+  margin-top: 5px;
+  width: 350px;
+  height: 350px;
+  border-radius: 10px;
+}
+
+.box-info {
+  margin-left: 10px;
+  padding: 0px;
+}
+
+.box-info-li {
+  padding: 1px;
+}
