@@ -9,8 +9,7 @@ import RandomCharacterInfo from "./random-character-info.js";
 class RandomCharacter extends Component {
   componentDidMount() {
     this.updateCharacter();
-    // this.interval = setInterval(this.updateCharacter, 10000);
-    this.apiService.getCharactersList().then(numb => console.log(numb));
+    this.interval = setInterval(this.updateCharacter, 10000);
   }
 
   state = {

@@ -5,8 +5,12 @@ import "./character-box.css";
 const CharacterBox = props => {
   return (
     <div className="card mb-3 character-box">
-      <h3 className="card-header character-name">Name:{props.name}</h3>
-      <img className="box-image box-character-image" src={props.image}></img>
+      <h3 className="card-header character-name">{props.name}</h3>
+      <img
+        className="box-image box-character-image"
+        src={props.image}
+        alt={props.id + "img"}
+      ></img>
       <div className="card-body box-info">
         <ul className="list-group list-group-flush box-info-ul ">
           <li className="list-group-item box-info-li">ID: {props.id}</li>
