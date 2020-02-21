@@ -15,21 +15,7 @@ class CharactersBoard extends Component {
 
   characterBox = this.apiService.getCharactersList().then(data => {
     this.setState({ charactersDataList: data, updated: true });
-    console.log(this.state);
   });
-
-  // charactersCard = this.state.charactersDataList.map(character => {
-  //   return (
-  //     <CharacterBox
-  //       name={character.name}
-  //       id={character.id}
-  //       series={character.series.available}
-  //       stories={character.stories.available}
-  //       comics={character.comics.available}
-  //       image={character.thumbnail.path + "." + character.thumbnail.extension}
-  //     />
-  //   );
-  // });
 
   render() {
     const charactersCard = this.state.updated
@@ -59,4 +45,4 @@ class CharactersBoard extends Component {
 
 export default CharactersBoard;
 
-//отображение настроить
+//сделать отдельный компонент characterCard
