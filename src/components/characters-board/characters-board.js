@@ -27,7 +27,7 @@ class CharactersBoard extends Component {
 
           return (
             <CharacterBox
-              click={() => this.props.showPerson(character.id)}
+              click={() => console.log(character.id)}
               name={character.name}
               id={character.id}
               series={character.series.available}

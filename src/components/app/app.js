@@ -6,15 +6,18 @@ import Header from "../header/header.js";
 import RandomCharacter from "../random-character/random-character.js";
 import CharactersBoard from "../characters-board/characters-board.js";
 import CharacterPage from "../character-page/character-page.js";
+import { BrowserRouter, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <RandomCharacter />
-      {/* <CharacterPage /> */}
-      <CharactersBoard showPerson={name => console.log(name)} />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header />
+        <RandomCharacter />
+        {/* <CharacterPage /> */}
+        <Route path="/" component={CharactersBoard} />
+      </div>
+    </BrowserRouter>
   );
 };
 
