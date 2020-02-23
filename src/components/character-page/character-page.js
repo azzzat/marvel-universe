@@ -26,7 +26,7 @@ class CharacterPage extends Component {
   }
 
   showCharacter = () => {
-    this.apiService.getCharacter(77).then(character => {
+    this.apiService.getCharacter().then(character => {
       this.setState({
         characterData: {
           id: character.data.results[0].id,

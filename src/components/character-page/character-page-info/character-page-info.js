@@ -9,7 +9,11 @@ const CharacterPageInfo = props => {
         <h1 className="display-3 characters-name">{props.name}</h1>
       </div>
       <div className="characters-info">
-        <img className="characters-image" src={props.image}></img>
+        <img
+          className="characters-image"
+          src={props.image}
+          alt={props.id + "img"}
+        ></img>
         <ul className="text-muted list-group list-group-flush">
           <li className="list-group-item">id: {props.id}</li>
           <li className="list-group-item">Comics: {props.comics}</li>

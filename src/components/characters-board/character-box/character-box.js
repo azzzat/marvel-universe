@@ -4,7 +4,11 @@ import "./character-box.css";
 
 const CharacterBox = props => {
   return (
-    <div className="card mb-3 character-box">
+    <div
+      className="card mb-3 character-box"
+      id={props.id}
+      onClick={props.click}
+    >
       <h3 className="card-header character-name">{props.name}</h3>
       <img
         className="box-image box-character-image"

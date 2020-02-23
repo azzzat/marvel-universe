@@ -10,9 +10,6 @@ class RandomCharacter extends Component {
   componentDidMount() {
     this.updateCharacter();
     // this.interval = setInterval(this.updateCharacter, 10000);
-    console.log(
-      this.apiService.getRandomCharacter(3).then(char => console.log(char))
-    );
   }
 
   state = {

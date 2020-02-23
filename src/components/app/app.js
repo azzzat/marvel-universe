@@ -12,8 +12,8 @@ const App = () => {
     <div>
       <Header />
       <RandomCharacter />
-      <CharacterPage />
-      {/* <CharactersBoard /> */}
+      {/* <CharacterPage /> */}
+      <CharactersBoard showPerson={name => console.log(name)} />
     </div>
   );
 };

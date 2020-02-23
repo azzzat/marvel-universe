@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./characters-board.css";
 
 import CharacterBox from "./character-box/character-box.js";
+// import CharacterPage from "../character-page/character-page.js";
 import ApiService from "../../services/api-service.js";
 
 class CharactersBoard extends Component {
@@ -20,8 +21,13 @@ class CharactersBoard extends Component {
   render() {
     const charactersCard = this.state.updated
       ? this.state.charactersDataList.map(character => {
+          // const showPerson = name => {
+          //   console.log(name);
+          // };
+
           return (
             <CharacterBox
+              click={() => this.props.showPerson(character.id)}
               name={character.name}
               id={character.id}
               series={character.series.available}
