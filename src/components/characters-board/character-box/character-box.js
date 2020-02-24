@@ -7,7 +7,7 @@ const CharacterBox = props => {
     <div
       className="card mb-3 character-box"
       id={props.id}
-      onClick={props.click}
+      // onClick={props.click}
     >
       <h3 className="card-header character-name">{props.name}</h3>
       <img

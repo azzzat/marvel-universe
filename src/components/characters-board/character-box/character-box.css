@@ -1,6 +1,7 @@
 .character-box {
   margin: 5px;
   width: 350px;
+  text-decoration: none;
 }
 
 .character-name {

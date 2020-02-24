@@ -5,6 +5,7 @@ import "./random-character.css";
 import LoadingImage from "../loading-image/loading-image.js";
 import ApiService from "../../services/api-service";
 import RandomCharacterInfo from "./random-character-info.js";
+import { Link } from "react-router-dom";
 
 class RandomCharacter extends Component {
   componentDidMount() {
@@ -52,11 +53,13 @@ class RandomCharacter extends Component {
 
     const showLoadingImage = !loaded ? <LoadingImage /> : null;
     const showRandomCharacter = loaded ? (
-      <RandomCharacterInfo character={character} />
+      <Link to={"/character/" + character.id} className="random-character">
+        <RandomCharacterInfo character={character} />
+      </Link>
     ) : null;
 
     return (
-      <div className="random-character">
+      <div>
         {showLoadingImage}
         {showRandomCharacter}
       </div>

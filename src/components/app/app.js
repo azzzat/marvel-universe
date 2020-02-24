@@ -15,7 +15,14 @@ const App = () => {
         <Header />
         <RandomCharacter />
         {/* <CharacterPage /> */}
-        <Route path="/" component={CharactersBoard} />
+        <Route path="/" component={CharactersBoard} exact />
+        <Route
+          path="/character/:id"
+          render={({ match }) => {
+            const { id } = match.params;
+            return <CharacterPage characterID={id} />;
+          }}
+        />
       </div>
     </BrowserRouter>
   );

@@ -24,9 +24,10 @@ class CharacterPage extends Component {
   componentDidMount() {
     this.showCharacter();
   }
-
+  // 1009610
   showCharacter = () => {
-    this.apiService.getCharacter().then(character => {
+    this.apiService.getCharacter(this.props.characterID).then(character => {
+      console.log(character);
       this.setState({
         characterData: {
           id: character.data.results[0].id,

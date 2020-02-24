@@ -5,6 +5,7 @@ import "./characters-board.css";
 import CharacterBox from "./character-box/character-box.js";
 // import CharacterPage from "../character-page/character-page.js";
 import ApiService from "../../services/api-service.js";
+import { Link } from "react-router-dom";
 
 class CharactersBoard extends Component {
   state = {
@@ -26,17 +27,19 @@ class CharactersBoard extends Component {
           // };
 
           return (
-            <CharacterBox
-              click={() => console.log(character.id)}
-              name={character.name}
-              id={character.id}
-              series={character.series.available}
-              stories={character.stories.available}
-              comics={character.comics.available}
-              image={
-                character.thumbnail.path + "." + character.thumbnail.extension
-              }
-            />
+            <Link to={"/character/" + character.id} className="characters-link">
+              <CharacterBox
+                // click={() => console.log(character.id)}
+                name={character.name}
+                id={character.id}
+                series={character.series.available}
+                stories={character.stories.available}
+                comics={character.comics.available}
+                image={
+                  character.thumbnail.path + "." + character.thumbnail.extension
+                }
+              />
+            </Link>
           );
         })
       : null;
