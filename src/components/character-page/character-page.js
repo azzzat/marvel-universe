@@ -24,17 +24,17 @@ class CharacterPage extends Component {
   apiService = new ApiService();
 
   componentDidMount() {
-    console.log("did mount");
-    this.showCharacter();
+    this.showCharacter(this.props.characterID);
   }
 
-  componentWillUpdate() {
-    console.log("будет обновлено");
+  componentWillUpdate(nextProps, nextState) {
+    if (nextProps.characterID !== this.props.characterID) {
+      this.showCharacter(nextProps.characterID);
+    }
   }
 
-  showCharacter = () => {
-    this.apiService.getCharacter(this.props.characterID).then(character => {
-      console.log("поменялся стейт", character.data.results[0].name);
+  showCharacter = id => {
+    this.apiService.getCharacter(id).then(character => {
       this.setState({
         characterData: {
           id: character.data.results[0].id,

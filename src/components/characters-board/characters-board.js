@@ -24,10 +24,6 @@ class CharactersBoard extends Component {
   render() {
     const charactersCard = this.state.updated
       ? this.state.charactersDataList.map(character => {
-          // const showPerson = name => {
-          //   console.log(name);
-          // };
-
           return (
             <Link to={"/character/" + character.id} className="characters-link">
               <CharacterBox

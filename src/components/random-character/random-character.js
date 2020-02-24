@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 class RandomCharacter extends Component {
   componentDidMount() {
     this.updateCharacter();
-    // this.interval = setInterval(this.updateCharacter, 10000);
+    this.interval = setInterval(this.updateCharacter, 10000);
   }
 
   state = {
@@ -51,11 +51,9 @@ class RandomCharacter extends Component {
   render() {
     const { character, loaded } = this.state;
 
-    console.log(character.id);
-
     const showLoadingImage = !loaded ? <LoadingImage /> : null;
     const showRandomCharacter = loaded ? (
-      <Link to={"/character/" + 1009207} className="random-character">
+      <Link to={"/character/" + character.id} className="random-character">
         <RandomCharacterInfo character={character} />
       </Link>
     ) : null;
