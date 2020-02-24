@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "./characters-board.css";
 
+import Header from "../header/header.js";
+import RandomCharacter from "../random-character/random-character.js";
 import CharacterBox from "./character-box/character-box.js";
 // import CharacterPage from "../character-page/character-page.js";
 import ApiService from "../../services/api-service.js";
@@ -45,8 +47,12 @@ class CharactersBoard extends Component {
       : null;
 
     return (
-      <div className="jumbotron body-board">
-        <div className="characters-board">{charactersCard}</div>
+      <div>
+        <Header />
+        <RandomCharacter />
+        <div className="jumbotron body-board">
+          <div className="characters-board">{charactersCard}</div>
+        </div>
       </div>
     );
   }

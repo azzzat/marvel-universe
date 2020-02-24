@@ -51,9 +51,11 @@ class RandomCharacter extends Component {
   render() {
     const { character, loaded } = this.state;
 
+    console.log(character.id);
+
     const showLoadingImage = !loaded ? <LoadingImage /> : null;
     const showRandomCharacter = loaded ? (
-      <Link to={"/character/" + character.id} className="random-character">
+      <Link to={"/character/" + 1009207} className="random-character">
         <RandomCharacterInfo character={character} />
       </Link>
     ) : null;

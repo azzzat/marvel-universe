@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "./character-page.css";
 
+import Header from "../header/header.js";
+import RandomCharacter from "../random-character/random-character.js";
 import ApiService from "../../services/api-service.js";
 import CharacterPageInfo from "./character-page-info/character-page-info.js";
 
@@ -22,12 +24,17 @@ class CharacterPage extends Component {
   apiService = new ApiService();
 
   componentDidMount() {
+    console.log("did mount");
     this.showCharacter();
   }
-  // 1009610
+
+  componentWillUpdate() {
+    console.log("будет обновлено");
+  }
+
   showCharacter = () => {
     this.apiService.getCharacter(this.props.characterID).then(character => {
-      console.log(character);
+      console.log("поменялся стейт", character.data.results[0].name);
       this.setState({
         characterData: {
           id: character.data.results[0].id,
@@ -52,6 +59,8 @@ class CharacterPage extends Component {
       loaded
     } = this.state;
 
+    console.log("render", name);
+
     const showCharacterInfo = loaded ? (
       <CharacterPageInfo
         id={id}
@@ -64,7 +73,13 @@ class CharacterPage extends Component {
       />
     ) : null;
 
-    return <div>{showCharacterInfo}</div>;
+    return (
+      <div>
+        <Header />
+        <RandomCharacter />
+        {showCharacterInfo}
+      </div>
+    );
   }
 }
 
