@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 class RandomCharacter extends Component {
   componentDidMount() {
     this.updateCharacter();
-    this.interval = setInterval(this.updateCharacter, 10000);
+    // this.interval = setInterval(this.updateCharacter, 10000);
   }
 
   state = {

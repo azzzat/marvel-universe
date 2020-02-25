@@ -9,12 +9,23 @@ import { BrowserRouter, Route } from "react-router-dom";
 const App = () => {
   return (
     <BrowserRouter>
-      <Route path="/" component={CharactersBoard} exact />
+      <Route exact path="/" render={() => <CharactersBoard boardPage="1" />} />
+
       <Route
+        exact
+        path="/:page"
+        render={({ match }) => {
+          const { page } = match.params;
+          return <CharactersBoard boardPage={page} />;
+        }}
+      />
+
+      <Route
+        exact
         path="/character/:id"
         render={({ match }) => {
           const { id } = match.params;
-          return <CharacterPage characterID={id} exact />;
+          return <CharacterPage characterID={id} />;
         }}
       />
     </BrowserRouter>

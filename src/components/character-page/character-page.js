@@ -59,8 +59,6 @@ class CharacterPage extends Component {
       loaded
     } = this.state;
 
-    console.log("render", name);
-
     const showCharacterInfo = loaded ? (
       <CharacterPageInfo
         id={id}

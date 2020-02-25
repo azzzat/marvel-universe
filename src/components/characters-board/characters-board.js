@@ -5,7 +5,7 @@ import "./characters-board.css";
 import Header from "../header/header.js";
 import RandomCharacter from "../random-character/random-character.js";
 import CharacterBox from "./character-box/character-box.js";
-// import CharacterPage from "../character-page/character-page.js";
+import PaginationBoard from "../pagination-board/pagination-board.js";
 import ApiService from "../../services/api-service.js";
 import { Link } from "react-router-dom";
 
@@ -17,9 +17,20 @@ class CharactersBoard extends Component {
 
   apiService = new ApiService();
 
-  characterBox = this.apiService.getCharactersList().then(data => {
-    this.setState({ charactersDataList: data, updated: true });
-  });
+  characterBox = boardPage =>
+    this.apiService.getCharactersList((boardPage - 1) * 30).then(data => {
+      this.setState({ charactersDataList: data, updated: true });
+    });
+
+  componentDidMount() {
+    this.characterBox(this.props.boardPage);
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextProps.boardPage !== this.props.boardPage) {
+      this.characterBox(nextProps.boardPage);
+    }
+  }
 
   render() {
     const charactersCard = this.state.updated
@@ -27,7 +38,6 @@ class CharactersBoard extends Component {
           return (
             <Link to={"/character/" + character.id} className="characters-link">
               <CharacterBox
-                // click={() => console.log(character.id)}
                 name={character.name}
                 id={character.id}
                 series={character.series.available}
@@ -46,6 +56,7 @@ class CharactersBoard extends Component {
       <div>
         <Header />
         <RandomCharacter />
+        <PaginationBoard pageNumber={this.props.boardPage} />
         <div className="jumbotron body-board">
           <div className="characters-board">{charactersCard}</div>
         </div>
