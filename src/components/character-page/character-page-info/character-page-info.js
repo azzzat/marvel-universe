@@ -4,7 +4,7 @@ import "./character-page-info.css";
 
 const CharacterPageInfo = props => {
   return (
-    <div className="jumbotron body-board">
+    <div className="jumbotron body-board main-character-board">
       <div className="characters-board">
         <h1 className="display-3 characters-name">{props.name}</h1>
       </div>
@@ -14,14 +14,15 @@ const CharacterPageInfo = props => {
           src={props.image}
           alt={props.id + "img"}
         ></img>
-        <ul className="text-muted list-group list-group-flush">
-          <li className="list-group-item">id: {props.id}</li>
-          <li className="list-group-item">Comics: {props.comics}</li>
-          <li className="list-group-item">Series: {props.series}</li>
-          <li className="list-group-item">Stories: {props.stories}</li>
-        </ul>
+        <p className="lead characters-description">{props.description}</p>
       </div>
-      <p className="lead characters-description">{props.description}</p>
+
+      <ul className="text-muted list-group list-group-flush">
+        <li className="list-group-item">id: {props.id}</li>
+        <li className="list-group-item">Comics: {props.comics}</li>
+        <li className="list-group-item">Series: {props.series}</li>
+        <li className="list-group-item">Stories: {props.stories}</li>
+      </ul>
     </div>
   );
 };

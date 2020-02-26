@@ -1,13 +1,17 @@
 .characters-info {
   display: flex;
+  min-width: 800px;
 }
 .characters-image {
-  width: 65%;
-  min-width: 350px;
+  margin-bottom: auto;
+  width: 50%;
+  min-width: 300px;
+  min-height: 300px;
 }
 
 .characters-description {
   min-width: 350px;
+  margin-left: 20px;
 }
 
 .characters-description {
@@ -15,4 +19,9 @@
   font-size: x-large;
   margin-top: 10px;
   margin-right: 25px;
+}
+
+.list-group-item {
+  margin-bottom: 2px;
+  padding-bottom: 2px;
 }

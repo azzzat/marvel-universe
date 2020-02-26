@@ -1,6 +1,10 @@
+.haeader-block {
+  width: 800px;
+}
+
 .page-header {
   margin-top: 5px;
-  padding-left: 25px;
+  margin-left: 25px;
   font-size: 60px;
   color: rgb(158, 58, 58);
 }
