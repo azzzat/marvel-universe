@@ -12,13 +12,13 @@ import { Link } from "react-router-dom";
 class CharactersBoard extends Component {
   state = {
     charactersDataList: null,
-    updated: false
+    updated: false,
   };
 
   apiService = new ApiService();
 
-  characterBox = boardPage =>
-    this.apiService.getCharactersList((boardPage - 1) * 30).then(data => {
+  characterBox = (boardPage) =>
+    this.apiService.getCharactersList((boardPage - 1) * 30).then((data) => {
       this.setState({ charactersDataList: data, updated: true });
     });
 
@@ -34,9 +34,13 @@ class CharactersBoard extends Component {
 
   render() {
     const charactersCard = this.state.updated
-      ? this.state.charactersDataList.map(character => {
+      ? this.state.charactersDataList.map((character) => {
           return (
-            <Link to={"/character/" + character.id} className="characters-link">
+            <Link
+              to={"/character/" + character.id}
+              className="characters-link"
+              key={"charKey-" + character.id}
+            >
               <CharacterBox
                 name={character.name}
                 id={character.id}

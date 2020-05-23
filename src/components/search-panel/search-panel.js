@@ -1,8 +1,18 @@
 // import React, { Component } from "react";
 
-// import "./searching-pannel.css";
+// import "./search-panel.css";
+// import ApiService from "../../services/api-service.js";
 
-// class SearchingPannel extends Component {
+// class SearchPanel extends Component {
+//     state = {
+//         charactersDatalist:null,
+//         loaded:false,
+//     }
+
+//     apiService = new ApiService();
+
+//     apiService.
+
 //     render() {
 
 //         return(

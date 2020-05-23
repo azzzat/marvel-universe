@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./pagination-board.css";
 
-const PaginationBoard = props => {
+const PaginationBoard = (props) => {
   const numberList = [
     1,
     2,
@@ -54,10 +54,10 @@ const PaginationBoard = props => {
     47,
     48,
     49,
-    50
+    50,
   ];
 
-  const activePage = number => {
+  const activePage = (number) => {
     if (number === props.pageNumber) {
       return "active";
     } else {
@@ -68,9 +68,12 @@ const PaginationBoard = props => {
   return (
     <div>
       <ul className="pagination pagination-sm pagination-board" href="/">
-        {numberList.map(number => {
+        {numberList.map((number) => {
           return (
-            <li className={"page-item " + activePage(number)}>
+            <li
+              className={"page-item " + activePage(number)}
+              key={"pahination-key-" + number}
+            >
               <Link className="page-link" to={"/" + number}>
                 {number}
               </Link>
