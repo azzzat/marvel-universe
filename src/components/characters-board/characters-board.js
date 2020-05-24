@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./characters-board.css";
 
 import Header from "../header/header.js";
+import SearchPanel from "../search-panel/search-panel.js";
 import RandomCharacter from "../random-character/random-character.js";
 import CharacterBox from "./character-box/character-box.js";
 import PaginationBoard from "../pagination-board/pagination-board.js";
@@ -60,6 +61,7 @@ class CharactersBoard extends Component {
       <div>
         <Header />
         <RandomCharacter />
+        <SearchPanel />
         <PaginationBoard pageNumber={this.props.boardPage} />
         <div className="jumbotron body-board">
           <div className="characters-board">{charactersCard}</div>
