@@ -37,9 +37,10 @@ class ApiService {
 
   getSearchedCharactersList = async () => {
     const characters = await fetch(
-      `https://gateway.marvel.com/v1/public/characters?nameStartsWith=Sp&apikey=3bc96d4bd6e4433bbdc3ad4ee302904c&hash=c439a02b89d34016a1cbace6708c4ed9`
-      // `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchedCharacter}&apikey=3bc96d4bd6e4433bbdc3ad4ee302904c&hash=c439a02b89d34016a1cbace6708c4ed9`
+      `https://gateway.marvel.com/v1/public/characters?ts=1&nameStartsWith=Sp&apikey=3bc96d4bd6e4433bbdc3ad4ee302904c&hash=c439a02b89d34016a1cbace6708c4ed9`
+      // `https://gateway.marvel.com/v1/public/characters?ts=1nameStartsWith=${searchedCharacter}&apikey=3bc96d4bd6e4433bbdc3ad4ee302904c&hash=c439a02b89d34016a1cbace6708c4ed9`
     );
+    console.log("нет");
     const list = await characters.json();
     return list;
   };
